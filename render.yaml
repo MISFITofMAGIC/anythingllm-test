@@ -1,0 +1,21 @@
+# Exported from Render on 2024-11-26T16:31:33Z
+services:
+- type: web
+  name: anythingllm
+  runtime: image
+  image:
+    url: docker.io/mintplexlabs/anythingllm:render
+  plan: standard
+  envVars:
+  - key: STORAGE_DIR
+    sync: false
+  - key: PORT
+    sync: false
+  region: oregon
+  healthCheckPath: /api/ping
+  disk:
+    name: AnythingLLM Storage
+    mountPath: /storage
+    sizeGB: 10
+  autoDeploy: false
+version: "1"
